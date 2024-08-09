@@ -16,6 +16,7 @@ class ImageSlider extends StatefulWidget {
   final Color activeDotColor;
   final bool indicatorHasBackground;
   final Function(int)? onTap;
+  final BorderRadiusGeometry borderRadius;
 
   const ImageSlider({
     super.key,
@@ -31,6 +32,7 @@ class ImageSlider extends StatefulWidget {
     this.activeDotColor = Colors.blue,
     this.indicatorHasBackground = true,
     this.onTap,
+    this.borderRadius = BorderRadius.zero,
   });
 
   @override
@@ -89,7 +91,7 @@ class _ImageSliderState extends State<ImageSlider> {
                           }
                         },
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: widget.borderRadius,
                           child: CustomImage(
                               url: widget.imageURLs[widget.infiniteLoop ? (index % widget.imageURLs.length) : index]),
                         ),
